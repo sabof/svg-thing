@@ -3,6 +3,8 @@
 (defvar st-timer nil)
 (defvar st-mouse-down-pos nil)
 (defvar st-objects nil)
+(defvar st-drag-timer nil)
+(defvar st-drag-object nil)
 
 (defun st-mouse-position ()
   (let ((wpe (window-inside-pixel-edges))
@@ -93,7 +95,7 @@
            (format "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"%s\" height=\"%s\" version=\"1.1\">\n"
                    (third wpe) (fourth wpe)))
          (circles "")
-         (line1 (st-curve st-objects "stroke=\"white\""))
+         (line1 (st-curve st-objects "stroke=\"white\" stroke-dasharray=\"5 2\" stroke-width=\"1\""))
          (line2 (st-curve (reverse st-objects) "stroke=\"black\""))
          (objects st-objects)
          (total-objects (length st-objects)))
@@ -123,30 +125,52 @@
 
 (defun st-reset-buffer ()
   (st-redraw)
-  (es-disable-local-scrolling)
+  (es-disable-buffer-scrolling)
   (st-set-keys))
+
+(defun st-move-object (pos new-pos)
+  )
 
 (defun st-reset ()
   (interactive)
   (setq st-objects nil)
   (st-reset-buffer))
 
+(defun st-drag-on-timer ()
+  (when st-drag-object
+    (let ((pos (st-mouse-position)))
+      (setcar st-drag-object (car pos))
+      (setcdr st-drag-object (cdr pos))
+      (st-reset-buffer))))
+
 (defun st-mouse-down (&rest ignore)
   (interactive)
-  (setq st-mouse-down-pos (st-mouse-position)))
+  (let ((obj ))
+    (setq st-mouse-down-pos (st-mouse-position))
+    (setq obj (st-object-at st-mouse-down-pos))
+    (when obj
+      (setq st-drag-object obj)
+      (setq st-drag-timer (run-with-timer 0 0.1 'st-drag-on-timer)
+            ;; (run-with-idle-timer 0.1 0.1 'st-drag-on-timer)
+            ))))
 
 (defun st-mouse-drag (&rest ignore)
   (interactive)
-  (let ((found (st-object-at st-mouse-down-pos))
-        pos)
-    (when found
-      (setq pos (position found st-objects))
-      (setf (nth pos st-objects) (st-mouse-position))
-      (st-reset-buffer))))
+  (when (timerp st-drag-timer)
+    (cancel-timer st-drag-timer)))
+
+(defun st-add-dot (pos)
+  (if (<= 4 (length st-objects))
+      (setq st-objects
+            (append
+             (butlast st-objects 2)
+             (list pos)
+             (last st-objects 2)))
+      (es-back-push pos st-objects)))
 
 (defun st-on-click (&rest ignore)
   (interactive)
-  (es-back-push (st-mouse-position) st-objects)
+  (st-add-dot (st-mouse-position))
   (st-reset-buffer))
 
 (defun svg-thing-start ()
