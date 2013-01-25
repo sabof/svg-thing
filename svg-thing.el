@@ -119,7 +119,8 @@ style=\"font-weight:bold; font-size: %spx; font-family: sans-serif;\">%s</text>"
   (let* (( wpe (window-inside-pixel-edges))
          ( content
            (format "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"%s\" height=\"%s\" version=\"1.1\">\n"
-                   (third wpe) (fourth wpe)))
+                   (- (third wpe) (first wpe))
+                   (- (fourth wpe) (second wpe))))
          (circles "")
          (line1 (st-curve st-objects "stroke=\"#ccc\" stroke-dasharray=\"5 2\" stroke-width=\"1\""))
          (line2 (st-curve (reverse st-objects) "stroke=\"#000\""))
