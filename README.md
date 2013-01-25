@@ -3,10 +3,13 @@ An interactive demo exploring emacs vector capablities.
 
 ![screenshot](https://github.com/sabof/svg-thing/raw/master/screenshot.png)
 
-## Instructions:
+## Installation:
 
-- Install es-lib (from here, or melpa)
-- Install svg-thing
+- Get es-lib (from here, or melpa)
+- Copy svg-thing.el to an empty buffer
+- M-x eval-buffer
+
+## Instructions:
 
 - Start: M-x svg-thing
 - Add node: middle-click
