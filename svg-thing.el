@@ -1,3 +1,6 @@
+;;; svg-thing.el --- An emacs vector demo
+(require 'es-lib)
+
 (defvar is-svg-thing nil)
 (make-variable-buffer-local 'is-svg-thing)
 (defvar st-timer nil)
