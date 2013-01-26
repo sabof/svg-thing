@@ -50,13 +50,8 @@
      (format "<g transform=\"translate(%s %s)\">"
              (/ width 2)
              (/ (+ height font-size) 2))
-     (format "<rect width=\"%s\" height=\"%s\" x=\"%s\" y=\"%s\" fill=\"none\"/>
-<text text-anchor=\"middle\" dominant-baseline=\"mathematical\" fill=\"#888\" fill-opacity=\"0.2\"
+     (format "<text text-anchor=\"middle\" dominant-baseline=\"mathematical\" fill=\"#888\" fill-opacity=\"0.2\"
 style=\"font-weight:bold; font-size: %spx; font-family: sans-serif;\">%s</text>"
-             (third wpe)
-             (fourth wpe)
-             (- (/ width 2))
-             (- (/ height 2))
              font-size
              text)
      "</g>"
