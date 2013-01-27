@@ -9,7 +9,7 @@ An interactive demo exploring emacs vector capablities.
 - Copy svg-thing.el to an empty buffer
 - M-x eval-buffer
 
-## (Not really) installation
+## (Not really) Installation:
 
 - Copy this code
 
