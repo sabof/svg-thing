@@ -13,6 +13,7 @@ An interactive demo exploring emacs vector capablities.
 
 - Copy this code
 
+```lisp
     (progn
       (setq package-user-dir "/tmp/tempelpa")
       (setq package-archives
@@ -33,6 +34,7 @@ An interactive demo exploring emacs vector capablities.
         (eval-buffer))
       (svg-thing)
       (delete-other-windows))
+```
 
 - Run "emacs -Q"
 - M-: C-y RET
