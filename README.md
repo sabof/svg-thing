@@ -9,6 +9,34 @@ An interactive demo exploring emacs vector capablities.
 - Copy svg-thing.el to an empty buffer
 - M-x eval-buffer
 
+## (Not really) installation
+
+- Copy this code
+
+    (progn
+      (setq package-user-dir "/tmp/tempelpa")
+      (setq package-archives
+            '(("melpa" . "http://melpa.milkbox.net/packages/")))
+      (package-initialize)
+      (package-refresh-contents)
+      (ignore-errors
+        (package-install 'es-lib)
+        (load "es-lib-buffer-local-set-key.el"))
+      (require 'es-lib)
+      (save-window-excursion
+        (switch-to-buffer
+         (url-retrieve-synchronously
+          "https://raw.github.com/sabof/svg-thing/master/svg-thing.el" ))
+        (goto-char (point-min))
+        (search-forward "\n\n")
+        (delete-region (point-min) (point))
+        (eval-buffer))
+      (svg-thing)
+      (delete-other-windows))
+
+- Run "emacs -Q"
+- M-: C-y RET
+
 ## Instructions:
 
 - Start: M-x svg-thing
