@@ -20,9 +20,7 @@ An interactive demo exploring emacs vector capablities.
             '(("melpa" . "http://melpa.milkbox.net/packages/")))
       (package-initialize)
       (package-refresh-contents)
-      (ignore-errors
-        (package-install 'es-lib)
-        (load "es-lib-buffer-local-set-key.el"))
+      (package-install 'es-lib)
       (require 'es-lib)
       (save-window-excursion
         (switch-to-buffer
