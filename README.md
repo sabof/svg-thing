@@ -3,12 +3,6 @@ An interactive demo exploring emacs vector capablities.
 
 ![screenshot](https://github.com/sabof/svg-thing/raw/master/screenshot.png)
 
-## Installation:
-
-- Get es-lib (from here, or melpa)
-- Copy svg-thing.el to an empty buffer
-- M-x eval-buffer
-
 ## (Not really) Installation:
 
 - Copy this code
@@ -22,15 +16,19 @@ An interactive demo exploring emacs vector capablities.
       (package-refresh-contents)
       (package-install 'es-lib)
       (require 'es-lib)
-      (save-window-excursion
-        (switch-to-buffer
-         (url-retrieve-synchronously
-          "https://raw.github.com/sabof/svg-thing/master/svg-thing.el" ))
+      (with-current-buffer
+          (url-retrieve-synchronously
+           "https://raw.github.com/sabof/svg-thing/master/svg-thing.el")
         (goto-char (point-min))
         (search-forward "\n\n")
         (delete-region (point-min) (point))
         (eval-buffer))
       (svg-thing)
+      (setq-default
+       mode-line-format nil)
+      (tool-bar-mode -1)
+      (menu-bar-mode -1)
+      (scroll-bar-mode -1)
       (delete-other-windows))
 ```
 

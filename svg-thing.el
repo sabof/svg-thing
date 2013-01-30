@@ -9,6 +9,8 @@
 (defvar st-drag-timer nil)
 (defvar st-drag-object nil)
 (defvar st-name nil)
+(defvar st-light-color "#AAAAAA")
+(defvar st-dark-color "#000000")
 
 (defun st-mouse-position ()
   (let ((wpe (window-inside-pixel-edges))
@@ -117,8 +119,10 @@ style=\"font-weight:bold; font-size: %spx; font-family: sans-serif;\">%s</text>"
                    (- (third wpe) (first wpe))
                    (- (fourth wpe) (second wpe))))
          (circles "")
-         (line1 (st-curve st-objects "stroke=\"#ccc\" stroke-dasharray=\"5 2\" stroke-width=\"1\""))
-         (line2 (st-curve (reverse st-objects) "stroke=\"#000\""))
+         (line1 (st-curve st-objects (format "stroke=\"%s\" stroke-dasharray=\"5 2\" stroke-width=\"1\""
+                                             st-light-color)))
+         (line2 (st-curve (reverse st-objects) (format "stroke=\"%s"
+                                                       st-dark-color)))
          (text (st-center-text st-name))
          (objects st-objects)
          (total-objects (length st-objects)))
