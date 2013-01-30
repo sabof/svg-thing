@@ -121,7 +121,7 @@ style=\"font-weight:bold; font-size: %spx; font-family: sans-serif;\">%s</text>"
          (circles "")
          (line1 (st-curve st-objects (format "stroke=\"%s\" stroke-dasharray=\"5 2\" stroke-width=\"1\""
                                              st-light-color)))
-         (line2 (st-curve (reverse st-objects) (format "stroke=\"%s"
+         (line2 (st-curve (reverse st-objects) (format "stroke=\"%s\""
                                                        st-dark-color)))
          (text (st-center-text st-name))
          (objects st-objects)
