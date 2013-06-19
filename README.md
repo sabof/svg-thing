@@ -10,8 +10,7 @@ An interactive demo exploring emacs vector capablities.
 ```lisp
     (progn
       (setq package-user-dir
-            (concat (file-name-directory (make-temp-file "pref"))
-                    "tempelpa"))
+            (concat temporary-file-directory "tempelpa"))
       (setq package-archives
             '(("melpa" . "http://melpa.milkbox.net/packages/")))
       (package-initialize)
