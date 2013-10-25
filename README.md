@@ -9,6 +9,7 @@ An interactive demo exploring emacs vector capablities.
 
 ```lisp
     (progn
+      (require 'cl)
       (setq package-user-dir
             (concat (file-name-directory (make-temp-file "pref"))
                     "tempelpa"))
