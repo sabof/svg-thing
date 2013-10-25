@@ -1,5 +1,6 @@
 ;;; svg-thing.el --- An emacs vector demo
 (require 'es-lib)
+(require 'cl)
 
 (defvar-local is-svg-thing nil)
 (defvar st-timer nil)
@@ -197,7 +198,7 @@ style=\"font-weight:bold; font-size: %spx; font-family: sans-serif;\">%s</text>"
              (butlast st-objects 2)
              (list pos)
              (last st-objects 2)))
-      (es-back-push pos st-objects)))
+    (es-back-push pos st-objects)))
 
 (defun st-right-click ()
   (interactive)
