@@ -18,8 +18,8 @@ An interactive demo exploring emacs vector capablities.
       (package-install 'es-lib)
       (require 'es-lib)
       (with-current-buffer
-          (url-retrieve-synchronously
-           "https://raw.github.com/sabof/svg-thing/master/svg-thing.el")
+      (url-retrieve-synchronously
+           "https://raw.githubusercontent.com/sabof/svg-thing/master/svg-thing.el")
         (goto-char (point-min))
         (search-forward "\n\n")
         (delete-region (point-min) (point))
