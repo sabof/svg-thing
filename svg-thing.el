@@ -107,6 +107,8 @@ style=\"font-weight:bold; font-size: %spx; font-family: sans-serif;\">%s</text>"
 (defun st-set-keys ()
   (es-buffer-local-set-keys
     (kbd "<mouse-2>") 'st-on-click
+    (kbd "<C-mouse-1>") 'st-on-click
+    (kbd "<C-down-mouse-1>") 'ignore
     (kbd "<down-mouse-1>") 'st-mouse-down
     (kbd "<drag-mouse-1>") 'st-mouse-drag
     (kbd "<mouse-3>") 'st-right-click
@@ -147,7 +149,10 @@ style=\"font-weight:bold; font-size: %spx; font-family: sans-serif;\">%s</text>"
     (erase-buffer)
     (insert content)
     (es-silence-messages
-      (image-mode))))
+      (image-mode)
+      ;; Changing mode may affect the bindings
+      (st-set-keys)
+      )))
 
 (defun st-set-name ()
   (let (( r1 (random 10))

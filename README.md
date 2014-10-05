@@ -39,7 +39,7 @@ An interactive demo exploring emacs vector capablities.
 ## Instructions:
 
 - Start: M-x svg-thing
-- Add node: middle-click
+- Add node: middle-click or Ctrl + left-click
 - Move node: left-click and drag
 - Delete node: right click
 - Reset: g
