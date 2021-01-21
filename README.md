@@ -12,7 +12,7 @@ An interactive demo exploring emacs vector capablities.
       (setq package-user-dir
             (concat temporary-file-directory "tempelpa"))
       (setq package-archives
-            '(("melpa" . "http://melpa.milkbox.net/packages/")))
+            '(("melpa" . "https://melpa.org/packages/")))
       (package-initialize)
       (package-refresh-contents)
       (package-install 'es-lib)
